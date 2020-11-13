@@ -9,21 +9,10 @@ public class Deck {
 	// Constructor
 	public Deck() {
 		this.deck = new Card[52];
-		this.isShuffeled = true;
+		this.isShuffeled = false;
 		makeDeck();
 	}
-
-// Initializing Cards
-	// Methods
-	public void shuffelDeck(Deck deck) {
-		this.isShuffeled = true;
-		System.out.println("Shuffel Cards");
-		
-//		for (int x = 1; x < Card.length; x++) {
-//			deck[x] = x;
-//			System.out.println("Deck");
-		}
-//	}
+	
 	public void makeDeck() {
 		String suit = "";
 		String value = "";
