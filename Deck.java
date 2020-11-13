@@ -15,15 +15,15 @@ public class Deck {
 	
 	public void makeDeck() {
 		String suit = "";
-		String value = "";
+		Card.Values value;
 		Card card = null;
 		int deckIndex = 0;
 		
 			for (int s = 0; s < Card.suits.length; s++) {
 //			System.out.println(v);
-				for (int v = 0; v < Card.values.length; v++) {
+				for (Card.Values v : Card.Values.values()) {
 					suit = Card.suits[s];
-					value = Card.values[v];
+					value = v;
 
 //				System.out.println(s);
 					card = new Card(suit, value);
@@ -33,7 +33,6 @@ public class Deck {
 				}
 			}
 		}
-
 	@Override
 	public String toString() {
 		String output = "";
@@ -42,4 +41,27 @@ public class Deck {
 		}
 		return output;
 	}
+	// Initializing Cards
+//	public void shuffelDeck(Deck deck) {
+//		boolean isShuffeled = false;
+//
+//		for (int d = 1; d < 52; d++) {
+//					deck[d] = d;
+//		}
+//	}
+
+	// Shuffle Deck
+	public void shuffle() {
+		Card currentCard = deck[0];
+
+		for (int card1 = 0; card1 < 52; card1++) {
+			int card2 = nextInt(52);
+
+			Card temp = deck[0];
+			Card first = deck[1];
+			deck[1] = temp;
+		}
+		
+	}
+
 }

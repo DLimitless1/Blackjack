@@ -5,7 +5,7 @@ public class Card {
 
 // Attributes, this is where I set the actual indiv. value for each card
 	String suit;
-	String value;
+	Values value;
 
 	// These are the card options
 	public final static String[] suits = {"Heart", "Spade", "Diamond", "Clubs" };
@@ -22,10 +22,14 @@ public class Card {
 		Values(int numValue) {
 			this.numValue = numValue;
 			System.out.println("Card");
+		
+		}
+		public int getNumValue() {
+			return numValue;
 		}
 	}
 
-	public Card(String suit, String value) {
+	public Card(String suit, Values value) {
 		this.suit = suit;
 		this.value = value;
 	}

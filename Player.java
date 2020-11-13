@@ -22,7 +22,7 @@ public class Player {
 	public int getHandSum() {
 		int Sum = 0;
 		for(Card countSum: playerHand) {
-			Sum = Sum + countSum.numValue();
+			Sum = Sum + countSum.value.getNumValue();
 		}
 		return Sum;
 	}

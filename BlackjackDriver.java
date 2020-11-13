@@ -21,60 +21,28 @@ public class BlackjackDriver {
 	public final static String[] playCard = { "Stand", "Hit", "Double", "Bust", "Surrender" };
 
 	// These are the players
-	public static String[] players = { "Player1", "Player2", "Player3" };
-	public static String[] dealer = { "dealer" };
-
-	// Initializing Cards
-	public void shuffelDeck(Deck deck) {
-		boolean isShuffeled = false;
-
-		for (int d = 1; d < 52; d++) {
-//					deck[d] = d;
-		}
-	}
-
-	// Shuffle Deck
-	public void shuffle() {
-		currentCard = 0;
-
-		for (int card1 = 0; card1 < 52; card1++) {
-			int card2 = random.nextInt(52);
-
-			Card temp = deck[first];
-			deck first = deck[second];
-			deck[second] = temp;
-		}
-	}
-
-	public Card dealNextCard() {
-			
-			//Get top card
-			Card topCard = this.deck[0];
-			
-			for(int currentCard = 1; currentCard < 52; currentCard++) {
-				this.deck[currentCard-1] = this.deck[currentCard];
-			}
-			this.deck[52] = null;
-			this.52--;
+	public final Player player = new Player();
+	public final Player dealer = new Player();
+	public Card dealNextCard();
 			
 	Scanner scanner = new Scanner(System.in);
 	String player = scanner.nextLine();
-	players = scanner.nextLine();
+	player = scanner.nextLine();
 	
 	if (player.equalsIgnoreCase("Yes")) {
 		Deck deck1 = new Deck();
 		Card card = new Card();
-		deck.shuffleDeck();
+		deck1.shuffleDeck();
 		System.out.println("Shuffel Deck");	
 	
 	// Deal
 		//Round 1
-		players.addCard(deck1.dealNextCard());
+		player.addCard(deck1.dealNextCard());
 		
 		//Round 2
-		players.addCard(deck1.dealNextCard());
+		player.addCard(deck1.dealNextCard());
 		
-		players.getPlayerHand(true);
+		player.getPlayerHand(true);
 		System.out.println(" ");
 		
 		dealer.getPlayerHand(false);
@@ -90,25 +58,25 @@ public class BlackjackDriver {
 	// Play Card
 	public void playCard(Card card) {
 		do {
-		System.out.println("Would" + players + " like to bust or stay?");
-		players = scanner.nextLine();
+		System.out.println("Would" + player + " like to bust or stay?");
+		player = scanner.nextLine();
 		
 		//Bust
 		
-		if (players.equalsIgnoreCase("Bust")) {
-			players.addCard(deck1.dealNextCard());
-			System.out.println(players.getHandSum());
+		if (player.equalsIgnoreCase("Bust")) {
+			player.addCard(deck1.dealNextCard());
+			System.out.println(player.getHandSum());
 				
-			if (players.getHandSum() > 21) {
-				System.out.println("You busted! You got a total of " + players.getHandSum() + ". Dealer wins!");
+			if (player.getHandSum() > 21) {
+				System.out.println("You busted! You got a total of " + player.getHandSum() + ". Dealer wins!");
 		}
 			}
 		//Stay
-		if (players.equalsIgnoreCase("Stay")) {
-			System.out.println("You chose to Stay" + players.getHandSum());
+		if (player.equalsIgnoreCase("Stay")) {
+			System.out.println("You chose to Stay" + player.getHandSum());
 		}
 		
-		}while(players.equalsIgnoreCase("Bust"));
+		}while(player.equalsIgnoreCase("Bust"));
 
 		// Dealer
 
